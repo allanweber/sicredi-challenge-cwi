@@ -1,0 +1,54 @@
+<section class="hero">
+  <div class="hero-body">
+    <h1 class="title">
+      Criar uma votação
+    </h1>
+
+    <form [formGroup]="votingForm" novalidate (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label class="label">Expiração em minutos</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            formControlName="expiration"
+            placeholder="Informe os minutos da expiração"/>
+        </div>
+        <p *ngIf="showError('expiration')" class="help is-danger">
+          Expiração inválido
+        </p>
+      </div>
+      <div class="field">
+        <label class="label">Pauta</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select
+              formControlName="rulingId"
+              placeholder="Selecione uma pauta">
+              <option *ngFor="let item of ruling" [value]="item.id">
+                {{ item.name }}</option
+              >
+            </select>
+          </div>
+        </div>
+        <p *ngIf="showError('rulingId')" class="help is-danger">
+          Pauta inválida
+        </p>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button
+            type="submit"
+            class="button is-primary"
+            [disabled]="!votingForm.valid">
+            Salvar
+          </button>
+        </div>
+        <div class="control">
+          <a class="button" routerLink="/voting">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

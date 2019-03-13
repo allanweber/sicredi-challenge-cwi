@@ -1,0 +1,41 @@
+<section class="hero">
+  <div class="hero-body">
+    <h1 class="title">
+      Votações
+    </h1>
+    <h2 class="subtitle">
+      Vote nas pautas abaixo
+    </h2>
+  </div>
+  <div class="columns is-multiline">
+    <article
+      *ngIf="voting.length == 0"
+      class="tile notification is-warning is-6">
+      <p class="subtitle">Nenhuma sessão de votação ativa</p>
+    </article>
+    <div class="column is-one-quarter" *ngFor="let item of voting">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Expira: {{ item.expirationDate | date: 'dd/MM/yyyy HH:mm' }}
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <p *ngIf="item">
+              {{ item.ruling.name }}
+            </p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a
+            href="#"
+            class="button card-footer-item is-info"
+            [routerLink]="['/voting/vote', item.id]"
+            >Votar</a
+          >
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>

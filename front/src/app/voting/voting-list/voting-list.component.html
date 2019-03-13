@@ -1,0 +1,64 @@
+<section class="hero">
+  <div class="hero-body">
+    <h1 class="title">
+      Votações
+    </h1>
+    <h2 class="subtitle">
+      <a class="button is-primary" routerLink="/voting/create">
+        <span class="icon">
+          <i class="fas fa-plus-square"></i>
+        </span>
+        <span>Criar Votação</span>
+      </a>
+    </h2>
+    <table class="table is-bordered is-striped is-fullwidth is-hoverable" *ngIf="voting.length > 0">
+      <thead>
+        <tr>
+          <th>Pauta</th>
+          <th>Situação</th>
+          <th>Expiração</th>
+          <th>Votar</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of voting">
+          <td>{{ item.ruling.name }}</td>
+          <td>
+            <span *ngIf="!item.expired" class="tag is-success"
+              >Aberta para votação</span
+            >
+            <span *ngIf="item.expired" class="tag is-danger">Expirada</span>
+          </td>
+          <td>{{ item.expirationDate | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>
+            <button
+              class="button is-info is-small"
+              [routerLink]="['/voting/vote', item.id]"
+              [disabled]="item.expired">
+              <span class="icon">
+                <i class="fas fa-vote-yea"></i>
+              </span>
+              <span>Votar</span>
+            </button>
+          </td>
+          <td>
+              <button
+                class="button is-info is-small"
+                [routerLink]="['/voting/result', item.id]">
+                <span class="icon">
+                  <i class="fas fa-chart-bar"></i>
+                </span>
+                <span>Resultado</span>
+              </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <article
+      *ngIf="voting.length == 0"
+      class="tile notification is-warning is-6">
+      <p class="subtitle">Nenhuma sessão de votação criada</p>
+    </article>
+  </div>
+</section>

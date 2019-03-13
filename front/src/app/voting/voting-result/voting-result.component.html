@@ -1,0 +1,15 @@
+<section class="hero">
+  <div class="hero-body">
+    <div class="tile is-parent" *ngIf="result">
+      <article class="tile is-child notification is-success">
+        <p class="subtitle">Sim</p>
+        <p class="title">{{ result.yes }}</p>
+      </article>
+      <article class="tile is-child notification is-danger">
+        <p class="subtitle">Não</p>
+        <p class="title">{{ result.no }}</p>
+      </article>
+    </div>
+    <a class="button margin-10" routerLink="/voting">Voltar</a>
+  </div>
+</section>

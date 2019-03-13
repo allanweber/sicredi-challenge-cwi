@@ -1,0 +1,32 @@
+<section class="hero">
+  <div class="hero-body">
+    <h1 class="title">
+      Pautas
+    </h1>
+    <h2 class="subtitle">
+      <a class="button is-primary" routerLink="/ruling/create">
+        <span class="icon">
+          <i class="fas fa-plus-square"></i>
+        </span>
+        <span>Criar Pauta</span>
+      </a>
+    </h2>
+    <table class="table is-bordered is-striped is-fullwidth is-hoverable" *ngIf="ruling.length > 0">
+      <thead>
+        <tr>
+          <th>Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ruling">
+          <td>{{ item.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <article
+      *ngIf="ruling.length == 0"
+      class="tile notification is-warning is-6">
+      <p class="subtitle">Nenhuma pauta criada</p>
+    </article>
+  </div>
+</section>

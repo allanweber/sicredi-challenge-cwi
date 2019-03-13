@@ -1,0 +1,65 @@
+<section class="hero">
+  <div class="hero-body">
+    <div class="columns">
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Votar na pauta
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p *ngIf="voting">
+                {{ voting.ruling.name }}
+              </p>
+            </div>
+            <form [formGroup]="voteForm" novalidate>
+              <div class="field">
+                <label class="label">CPF</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    formControlName="cpf"
+                    placeholder="Informe seu cpf"
+                  />
+                </div>
+                <p *ngIf="showError('cpf')" class="help is-danger">
+                  CPF inválido
+                </p>
+              </div>
+              <div class="columns is-centered">
+                <div class="column is-half">
+                  <button
+                    type="submit"
+                    class="button is-success is-large"
+                    [disabled]="!voteForm.valid"
+                    (click)="voteYes()"
+                  >
+                    Sim
+                  </button>
+                </div>
+                <div class="column is-half">
+                  <button
+                    type="submit"
+                    class="button is-danger is-large"
+                    [disabled]="!voteForm.valid"
+                    (click)="voteNo()"
+                  >
+                    Não
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <footer class="card-footer">
+            <a href="#" class="button card-footer-item" routerLink="/"
+              >Cancelar</a
+            >
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

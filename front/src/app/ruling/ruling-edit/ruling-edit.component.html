@@ -1,0 +1,37 @@
+<section class="hero">
+  <div class="hero-body">
+    <h1 class="title">
+      Criar uma pauta
+    </h1>
+
+    <form [formGroup]="rulingForm" novalidate (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label class="label">Nome</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            formControlName="name"
+            placeholder="Nome da pauta"/>
+        </div>
+        <p *ngIf="showError('name')" class="help is-danger">
+          Nome inválido
+        </p>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button
+            type="submit"
+            class="button is-primary"
+            [disabled]="!rulingForm.valid">
+            Salvar
+          </button>
+        </div>
+        <div class="control">
+          <a class="button" routerLink="/ruling">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
