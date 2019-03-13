@@ -44,15 +44,20 @@ O projeto é composto por:
 
 # Run the app
 
+## Dependências
+
+### Docker
 **Precisa ter o docker instalado ou uma instancia de mongo que:**
-* Ou seja local acessível por localhost:27017
+* Ou seja local acessível por **localhost:27017**
 * Ou a configuração de conexão da api deve ser alterada no arquivo application.yml
+
+### NodeJs, NPM e Angular CLI
 
 ## Executrar as aplicações
 
 * Se optar por criar uma instancia de mongo com docker, rodar o comando: **docker run -p 27017:27017 mongo**, pode usar **-d** para deixar detached
 * Ir para o diretório api e rodar o comando para subir a aplicação: **gradlew bootRun**
-* Ir para o diretório front e rodar o comando para subir a aplicação: **ng serve**
+* Ir para o diretório front e rodar o comando **npm install** para baixar as dependências e para subir a aplicação: **ng serve**
 * Acessar a url **http://localhost:8080** ou swagger **http://localhost:8080/swagger-ui.html**
 * Acessar a url **http://localhost:4200** para o front end
 
