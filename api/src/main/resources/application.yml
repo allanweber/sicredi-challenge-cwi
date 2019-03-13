@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ruling
+
+integrations:
+  user-service: https://user-info.herokuapp.com/users/
